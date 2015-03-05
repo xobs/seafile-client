@@ -222,11 +222,11 @@ CreateRepoRequest::CreateRepoRequest(const Account& account, const QString &name
     : SeafileApiRequest (account.getAbsoluteUrl(kCreateRepoUrl),
                          SeafileApiRequest::METHOD_POST, account.token)
 {
-    this->setFormParam(QString("name"), name);
-    this->setFormParam(QString("desc"), desc);
+    setFormParam(QString("name"), name);
+    setFormParam(QString("desc"), desc);
     if (!passwd.isNull()) {
         qWarning("Encrypted repo");
-        this->setFormParam(QString("passwd"), passwd);
+        setFormParam(QString("passwd"), passwd);
     }
 }
 
@@ -254,11 +254,11 @@ CreateSubrepoRequest::CreateSubrepoRequest(const Account& account, const QString
     : SeafileApiRequest (account.getAbsoluteUrl(QString(kCreateSubrepoUrl).arg(repoid)),
                          SeafileApiRequest::METHOD_GET, account.token)
 {
-    this->setUrlParam(QString("p"), path.endsWith('/') ? path : path + "/");
-    this->setUrlParam(QString("name"), name);
+    setUrlParam(QString("p"), path.endsWith('/') ? path : path + "/");
+    setUrlParam(QString("name"), name);
     if (!passwd.isNull()) {
         qWarning("Encrypted repo");
-        this->setUrlParam(QString("passwd"), passwd);
+        setUrlParam(QString("passwd"), passwd);
     }
 }
 
